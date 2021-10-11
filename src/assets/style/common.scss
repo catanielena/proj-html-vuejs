@@ -22,6 +22,7 @@ a,
 button,
 input {
     font-family: 'Montserrat', sans-serif;
+    font-size: .75rem;
 }
 // --titles
 h2 {
@@ -44,7 +45,6 @@ h5 {
 }
 // --txt 
 body {
-    font-size: .75rem;
     font-weight: 400;
 }
 
@@ -68,13 +68,39 @@ ul {
 // 
 a {
     display: inline-block;
+    text-decoration: none;
 }
 // 
 // 
-// Button
+// Button, btn
 // 
 // 
 button {
     text-transform: uppercase;
     cursor: pointer;
+}
+.btn {
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.btn--sm {
+    padding: .8rem 1.25rem;
+    border-radius: 2rem;
+}
+
+.btn--md {
+    padding: 1.25rem 2.75rem;
+    border-radius: 2rem;
+}
+
+.btn--plein {
+    background-color: $cbHavelockBlue;
+    color: $cbWhite;
+}
+
+.btn--border {
+    background-color: transparent;
+    color: $cbWhite;
+    border: 2px solid $cbWhite;
 }
