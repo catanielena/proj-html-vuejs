@@ -1,5 +1,5 @@
 <template>
-    <div class="Header">
+    <header class="Header">
         <!-- header-top -->
         <div class="header-top">
             <div class="wrapper">
@@ -44,7 +44,7 @@
             </div>
         </div>
         <!-- /header-bottom -->
-    </div>
+    </header>
 </template>
 
 <script>
