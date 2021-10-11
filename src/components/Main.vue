@@ -13,4 +13,7 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/style/common';
 
+.Main {
+    padding-top: 11.4rem;
+}
 </style>

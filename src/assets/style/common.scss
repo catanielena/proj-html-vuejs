@@ -1,5 +1,6 @@
 @import './variables';
 @import './mixin';
+@import '~@fortawesome/fontawesome-free/css/all.css';
 // 
 // 
 // Reset
@@ -9,6 +10,14 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+// 
+// Wrapper
+// 
+// 
+.wrapper {
+    max-width: 75rem;
+    margin: 0 auto
 }
 // 
 // 
@@ -22,7 +31,8 @@ a,
 button,
 input {
     font-family: 'Montserrat', sans-serif;
-    font-size: .75rem;
+    font-size: $txt;
+    letter-spacing: .02rem;
 }
 // --titles
 h2 {
@@ -46,10 +56,14 @@ h5 {
 // --txt 
 body {
     font-weight: 400;
+    color: $cbShark;
+}
+.text--xs {
+    font-size: .7rem;
 }
 
 .text--sm {
-    font-size: .5rem;
+    font-size: .85rem;
 }
 
 
@@ -70,37 +84,59 @@ a {
     display: inline-block;
     text-decoration: none;
 }
+
+a.btn--sm {
+    font-size: $txt;
+    font-weight: 600;
+    letter-spacing: .05rem;
+    text-transform: uppercase;
+    padding: .8rem 1.25rem;
+    border-radius: 2rem;
+}
+
+a.btn--md {
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 1.25rem 2.75rem;
+    border-radius: 2rem;
+}
+
+a.btn--filled {
+    background-color: $cbHavelockBlue;
+    color: $cbWhite;
+}
+
+a.btn--border {
+    background-color: transparent;
+    color: $cbWhite;
+    border: 2px solid $cbWhite;
+}
 // 
 // 
 // Button, btn
 // 
 // 
 button {
-    text-transform: uppercase;
+    background-color: transparent;
+    border: none;
     cursor: pointer;
 }
+
 .btn {
-    font-weight: 700;
-    text-transform: uppercase;
+    color: $cbShark;
+
+    & > *:not(:last-child) {
+            margin-right: $gutter;
+    }
 }
 
-.btn--sm {
-    padding: .8rem 1.25rem;
-    border-radius: 2rem;
+
+button.btn--border {
+    border-left: 1px solid $grey-500;
+    border-right: 1px solid $grey-500;
 }
 
-.btn--md {
-    padding: 1.25rem 2.75rem;
-    border-radius: 2rem;
+button.btn--filled {
+    background-color: $grey-800;
 }
 
-.btn--plein {
-    background-color: $cbHavelockBlue;
-    color: $cbWhite;
-}
-
-.btn--border {
-    background-color: transparent;
-    color: $cbWhite;
-    border: 2px solid $cbWhite;
-}

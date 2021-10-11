@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header :mainNav="mainNav"/>
     <Main/>
     <Footer/>
   </div>
@@ -233,4 +233,5 @@ export default {
 
 <style lang="scss">
 @import './assets/style/common';
+
 </style>
