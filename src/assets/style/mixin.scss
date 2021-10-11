@@ -29,9 +29,15 @@
     align-items: flex-start;
 }
 
-// --flex-center
+// --flex-x-center
 @mixin flex--x-C{
     display: flex;
+    align-items: center;
+}
+// --flex-x-center
+@mixin flex--C-C{
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 // 
