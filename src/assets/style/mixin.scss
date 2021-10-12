@@ -46,9 +46,16 @@
 // 
 // 
 // --background image
-@mixin bgImg($pathImg) {
+@mixin bgImg--Top($pathImg) {
     background-image: url($pathImg);
     background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@mixin bgImg--Center($pathImg) {
+    background-image: url($pathImg);
+    background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
 }

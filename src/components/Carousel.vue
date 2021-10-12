@@ -34,7 +34,7 @@ export default {
         next() {
             if(this.max >= this.selection.length) {
                 this.min = 0;
-                this.max = this.selection.length -1;
+                this.max = 5;
             } else {
                 this.min++;
                 this.max++;

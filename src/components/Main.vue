@@ -48,7 +48,7 @@
         </section>
         <!-- /featured-products -->
         <!-- collection -->
-        <section class="collection">
+        <section class="collection banner">
             <div class="collection__season">
                 <div class="season__img">
                     <img src="../assets/img/winter_collection_bg.jpg" alt="winter">
@@ -89,19 +89,40 @@
             </div>
         </section>
         <!-- /best-seller -->
-
+        <div class="promo-adv banner">
+            <div class="wrapper">
+                <div class="promo-adv__item">
+                    <AdvCard 
+                    :title="'70% Off'" 
+                    :txt="'Vivamus tempor leo lacus, feugiat ut magna aliquam erat'"
+                    :link="'#'"
+                    :bg="require('../assets/img/promo_box_1_bg.jpg')"/>                 
+                </div>
+                <div class="promo-adv__item">
+                    <AdvCard 
+                    :title="'Free Shipping'" 
+                    :txt="'Vivamus tempor leo lacus, feugiat ut magna aliquam erat'"
+                    :link="'#'"
+                    :bg="require('../assets/img/promo_box_2_bg.jpg')"/>                 
+                </div>                
+            </div>
+        </div>
+        
     </main>
 </template>
 
 <script>
 import SectionHeader from './SectionHeader.vue';
 import Carousel from './Carousel.vue';
+import AdvCard from './AdvCard.vue';
+
 
 export default {
     name:"Main",
     components: {
         SectionHeader,
-        Carousel
+        Carousel,
+        AdvCard
     },
     props: {
         products: Array,
@@ -149,7 +170,7 @@ export default {
     color: $cbWhite;
     height: 40.625rem;
     @include flex--x-C;
-    @include bgImg('../assets/img/home1_slide_three_bg_2.jpg');
+    @include bgImg--Top('../assets/img/home1_slide_three_bg_2.jpg');
 
     .wrapper {
         text-align: center;
@@ -230,7 +251,6 @@ export default {
 }
 
 .collection {
-    height: $sectionHeight;
     color: $cbWhite;
     display: flex;
     text-align: center;
@@ -265,5 +285,21 @@ export default {
 
 .best-seller {
     margin: $sectionMargin;
+}
+
+.promo-adv {
+    @include bgImg--Center('../assets/img/bkgd_confetti-compressor.jpg');
+    padding: $bannerPadding 0;
+    .wrapper {
+        height: 100%;
+        @include flex--SB-C;
+    }
+
+    .promo-adv__item {
+        height: 100%;
+        width: calc(50% - $gutter--md);
+        background-color: red;
+    }
+
 }
 </style>
