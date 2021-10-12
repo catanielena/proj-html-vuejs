@@ -33,9 +33,11 @@ $grey-800: #f6f6f6;
 // Gutter
 // 
 //
+$gutter--sm: .5rem;
 $gutter: .75rem;
 $gutter--md: 1.375rem;
 $gutter--lg: 3.125rem;
+$gutter--xl: 7.5rem; 
 // 
 //
 // FontSize
@@ -43,3 +45,16 @@ $gutter--lg: 3.125rem;
 //
 $txt: 1rem;
 $txt--md: 1.2rem;
+// 
+//
+// Border
+// 
+//
+$border: 1px solid $grey-500;
+// 
+//
+// Section 
+// 
+//
+$sectionHeight: 38.75rem;
+$sectionMargin: 8.125rem;

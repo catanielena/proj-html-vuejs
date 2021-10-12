@@ -10,7 +10,7 @@
                         <span>My Account</span>
                         <i class="fas fa-chevron-down text--xs"></i>
                     </button>
-                    <button class="btn text--sm btn--filled btn-cart">
+                    <button class="btn text--sm btn--lg btn--filled btn-cart">
                         <i class="fas fa-shopping-cart"></i>
                         <span>CART</span>
                         <i class="fas fa-chevron-down"></i>
@@ -69,9 +69,10 @@ export default {
     width: 100%;
     top: 0;
     z-index: 10;
+    background-color: $cbWhite;
 
     & > * {
-        border-bottom: 1px solid $grey-500;
+        border-bottom: $border;
     }
 
     .wrapper {
@@ -82,11 +83,9 @@ export default {
         color: $grey;
         .btn {
             color: $grey;
-            padding: $gutter--md $gutter;
         }
 
         .btn-cart {
-            width: 15rem;
             font-weight: 500;
         }
     }

@@ -41,15 +41,15 @@ h2 {
 }
 
 h3 {
-    font-size: 1.875rem
+    font-size: 2rem;
 }
 
 h4 {
-    font-size: 1.375rem;
+    font-size: 1rem;
 }
 
 h5 {
-    font-size: .8rem;
+    font-size: 1rem;
     font-weight: 400;
     text-transform: uppercase;
 }
@@ -125,16 +125,20 @@ button {
 
 .btn {
     color: $cbShark;
-
+    padding: $gutter--md $gutter;
     & > *:not(:last-child) {
             margin-right: $gutter;
     }
 }
 
+button.btn--lg {
+    padding-left: 3.75rem;
+    padding-right: 3.75rem;
+}
 
 button.btn--border {
-    border-left: 1px solid $grey-500;
-    border-right: 1px solid $grey-500;
+    border-left: $border;
+    border-right: $border;
 }
 
 button.btn--filled {

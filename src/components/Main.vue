@@ -14,12 +14,109 @@
             </div>
         </section>
         <!-- /hero -->
+        <!-- featured-products -->
+        <section class="featured-prod">
+            <div class="wrapper">
+                <SectionHeader :title="'Featured Products'" :subtitle="'Must have products from our top sellers'"/>
+                <div class="featured-prod__filters">
+                    <ul class="filters-list">
+                        <li class="filters-list__item" v-for="(category, i) in categories" :key="category.name">
+                            <button class="btn btn--lg" :class="{active: category.active}" @click="filterFeatured(i),getProd(category.name)">{{category.name}}</button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="featured-prod__prod">
+                    <ul class="prod__list">
+                        <li class="list__item" v-for="prod in productsFiltered" :key="prod.id">
+                            <div class="item__img">
+                                <img :src="require(`../assets/img/${prod.id}-400x520.jpg`)" :alt="prod.id">
+                            </div>
+                            <ul class="item__list">
+                                <li>
+                                    <h4>{{prod.name}}</h4>
+                                </li>
+                                <li class="item__tag text--sm">{{commaList(prod.tag)}}</li>
+                                <li class="item__price">
+                                    <span class="sale-price text--sm" v-if="prod.salePrice !== null">${{prod.salePrice}}</span>
+                                    <span>${{prod.price}}</span>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- /featured-products -->
+        <!-- collection -->
+        <section class="collection">
+            <div class="collection__season">
+                <div class="season__img">
+                    <img src="../assets/img/winter_collection_bg.jpg" alt="winter">
+                </div>
+                <div class="season__text">
+                    <h3>Winter Collection</h3>
+                    <h5>Stilish and warm</h5>
+                    <a href="#" class="btn btn--sm btn--border">View More</a>
+                </div>
+            </div>
+            <div class="collection__season">
+                <div class="season__img">
+                    <img src="../assets/img/spring_collection_bg.jpg" alt="spring">
+                </div>
+                <div class="season__text">
+                    <h3>Winter Collection</h3>
+                    <h5>Stilish and warm</h5>
+                    <a href="#" class="btn btn--sm btn--border">View More</a>
+                </div>
+            </div>
+            <div class="collection__season">
+                <div class="season__img">
+                    <img src="../assets/img/autumn_collection_bg.jpg" alt="autumn">
+                </div>
+                <div class="season__text">
+                    <h3>Winter Collection</h3>
+                    <h5>Stilish and warm</h5>
+                    <a href="#" class="btn btn--sm btn--border">View More</a>
+                </div>
+            </div>
+        </section>
+        <!-- /collection -->
     </main>
 </template>
 
 <script>
+import SectionHeader from './SectionHeader.vue'
 export default {
-    name:"Main"
+    name:"Main",
+    components: {
+        SectionHeader
+    },
+    props: {
+        products: Array,
+        categories: Array
+    },
+    data() {
+        return {
+            productsFiltered: []
+        }
+    },
+    methods: {
+        filterFeatured(i) {
+            this.categories.forEach(e => e.active = false);
+            this.categories[i].active = true;
+        },
+        getProd(c) {
+            this.filterCategory = c;
+            this.productsFiltered = this.products.filter((e) => e.category.toLowerCase() == c.toLowerCase() && e.featured == true);
+            return this.productsFiltered;
+        },
+        commaList(arr) {
+            return arr.join(', ')
+        }
+    },
+    mounted() {
+        this.getProd(this.categories[0].name)
+    }
 }
 </script>
 
@@ -55,6 +152,96 @@ export default {
 
     .hero__btn {
         @include flex--C-C;
+    }
+}
+
+.featured-prod {
+    margin: $sectionMargin 0 12.5rem;
+    .featured-prod__filters {
+        @include flex--C-C;
+    }
+
+    .filters-list {
+        @include inlineList;
+        border: $border;
+    }
+
+    .filters-list__item {
+        background-color: $grey-800;
+
+        .btn.active {
+            background-color: $cbWhite;
+        }
+    }
+
+    .featured-prod__prod {
+        .filters-list {
+            @include inlineList;
+        }
+
+        .list__item {
+            width: 25%;
+
+            img {
+                width: 100%;
+            }
+
+            &:last-child {
+                margin-right: auto;
+            }
+        }
+        
+        .prod__list {
+            @include inlineList;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            .item__list>* {
+                margin-top: $gutter;
+            }
+        }
+
+        .sale-price {
+            color: $cbHavelockBlue;
+            text-decoration: line-through;
+            text-decoration-color: $cbShark;
+            margin-right: $gutter--sm;
+        }
+    }
+
+}
+
+.collection {
+    height: $sectionHeight;
+    color: $cbWhite;
+    display: flex;
+    text-align: center;
+
+    .collection__season {
+        flex-grow: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        .season__text>* {
+            margin-bottom: $gutter--md;
+
+            &:last-child {
+                margin-bottom: $gutter--lg;
+            }
+        }
+    }
+
+    .season__img {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        z-index: -1;
+    }
+
+    img {
+        @include objFit--C-T;
     }
 }
 </style>

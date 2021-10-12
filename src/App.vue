@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header :mainNav="mainNav"/>
-    <Main/>
+    <Main :products="products" :categories="categories"/>    
     <Footer/>
   </div>
 </template>
@@ -132,9 +132,9 @@ export default {
           price: 50,
           salePrice: 30,
           reviews: [],
-          featured: false,
+          featured: true,
           id: 'brown_dress_shoes',
-          category: 'accesories',
+          category: 'accessories',
           tag: ['Accesories', 'Boots']
         },
         {
@@ -158,9 +158,9 @@ export default {
               date: '01/10/21'
             }
           ],
-          featured: false,
+          featured: true,
           id: 'leather_gloves',
-          category: 'accesories',
+          category: 'accessories',
           tag: ['Accesories', 'Gloves']
         },
         {
@@ -195,7 +195,7 @@ export default {
           salePrice: null,
           reviews: [],
           featured: true,
-          id: 'black_leather_suit',
+          id: 'modern_black_leather_suit',
           category: 'men',
           tag: ['Men', 'Jackets']
         },     
@@ -205,7 +205,7 @@ export default {
           salePrice: null,
           reviews: [],
           featured: true,
-          id: 'black_leather_suit',
+          id: 'blue_jacket_and_white_stripe_tee',
           category: 'men',
           tag: ['Men', 'Jackets', 'Suits']
         },
@@ -220,13 +220,33 @@ export default {
           tag: ['Women', 'Tee']
         }         
       ],
-      products: []
+      products: [],
+      categories: [
+        {
+          name: 'men',
+          active: true
+        },
+        {
+          name: 'women',
+          active: false
+        },
+        {
+          name: 'accessories',
+          active: false
+        }
+      ]
     }
   },
   created() {
     this.products = this.data.sort((a, b) =>
       a.name.toLowerCase().localeCompare(b.name.toLowerCase())
     );
+    let c = [];
+    this.products.forEach(e => {
+        if(c.includes(e.category) == false) {
+            c.push(e.category)
+        }
+    });
   }
 }
 </script>

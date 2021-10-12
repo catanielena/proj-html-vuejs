@@ -48,7 +48,7 @@
 // --background image
 @mixin bgImg($pathImg) {
     background-image: url($pathImg);
-    background-position: center;
+    background-position: top;
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -58,7 +58,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: top;
 }
 // 
 // 
