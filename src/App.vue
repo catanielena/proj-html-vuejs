@@ -83,6 +83,7 @@ export default {
           reviews: [],
           featured: true,
           bestSeller: true,
+          newArrivals: true,
           id: 'black_leather_jacket',
           category: 'women',
           tag: ['Women', 'Jackets']
@@ -105,6 +106,7 @@ export default {
           ],
           featured: true,
           bestSeller: true,
+          newArrivals: true,
           id: 'black_elegant_leather_jacket',
           category: 'men',
           tag: ['Men', 'Jackets']
@@ -116,6 +118,7 @@ export default {
           reviews: [],
           featured: true,
           bestSeller: true,
+          newArrivals: true,
           id: 'hipster_black_top',
           category: 'women',
           tag: ['Women', 'Top']
@@ -127,6 +130,7 @@ export default {
           reviews: [],
           featured: false,
           bestSeller: false,
+          newArrivals: true,
           id: 'blue_leather_jacket',
           category: 'men',
           tag: ['Men', 'Jackets', 'Suits']
@@ -139,6 +143,7 @@ export default {
           featured: true,
           id: 'brown_dress_shoes',
           bestSeller: false,
+          newArrivals: false,
           category: 'accessories',
           tag: ['Accesories', 'Boots']
         },
@@ -165,6 +170,7 @@ export default {
           ],
           featured: true,
           bestSeller: false,
+          newArrivals: false,
           id: 'leather_gloves',
           category: 'accessories',
           tag: ['Accesories', 'Gloves']
@@ -182,6 +188,7 @@ export default {
           ],
           featured: false,
           bestSeller: true,
+          newArrivals: true,
           id: 'spring_printed_dress',
           category: 'women',
           tag: ['Women', 'Dress']
@@ -194,6 +201,7 @@ export default {
           featured: true,
           id: 'black_leather_suit',
           bestSeller: false,
+          newArrivals: true,
           category: 'men',
           tag: ['Men', 'Jackets']
         }, 
@@ -204,6 +212,7 @@ export default {
           reviews: [],
           featured: true,
           bestSeller: false,
+          newArrivals: false,
           id: 'modern_black_leather_suit',
           category: 'men',
           tag: ['Men', 'Jackets']
@@ -215,6 +224,7 @@ export default {
           reviews: [],
           featured: true,
           bestSeller: true,
+          newArrivals: false,
           id: 'blue_jacket_and_white_stripe_tee',
           category: 'men',
           tag: ['Men', 'Jackets', 'Suits']
@@ -226,6 +236,7 @@ export default {
           reviews: [],
           featured: false,
           bestSeller: true,
+          newArrivals: true,
           id: 'modern_love_tee',
           category: 'women',
           tag: ['Women', 'Tee']

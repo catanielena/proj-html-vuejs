@@ -83,7 +83,8 @@
             </div>
         </section>
         <!-- /best-seller -->
-        <div class="promo-adv banner">
+        <!-- promo -->
+        <section class="promo-adv banner">
             <div class="wrapper">
                 <div class="promo-adv__item">
                     <AdvCard 
@@ -100,8 +101,14 @@
                     :bg="require('../assets/img/promo_box_2_bg.jpg')"/>                 
                 </div>                
             </div>
-        </div>
-        
+        </section>
+        <!-- /promo -->
+        <!-- /new-arrivals -->
+        <section class="new-arrivals">
+                <SectionHeader :title="'New Arrivals'" :subtitle="'Must have products from our top designers'"/>
+                <Carousel :selection="getNewArrivals()"/>       
+        </section>
+        <!-- /new-arrivals -->        
     </main>
 </template>
 
@@ -146,6 +153,10 @@ export default {
             return this.products
                 .filter(e => e.bestSeller == true)
                 .reverse()
+        },
+        getNewArrivals() {
+            return this.products
+                .filter(e => e.newArrivals == true)
         },
 
     },
@@ -256,8 +267,9 @@ export default {
     }
 }
 
-.best-seller {
-    margin: $sectionMargin;
+.best-seller,
+.new-arrivals {
+    margin: $sectionMargin 0;
 }
 
 .promo-adv {

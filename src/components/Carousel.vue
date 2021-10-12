@@ -43,8 +43,8 @@ export default {
         },
         prev() {
             if(this.min <= 0) {
-                this.min = 0;
-                this.max = 5;
+                this.min = this.selection.length - 5;
+                this.max = this.selection.length;
             } else {
                 this.min--;
                 this.max--;
