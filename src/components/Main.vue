@@ -50,34 +50,28 @@
         <!-- collection -->
         <section class="collection banner">
             <div class="collection__season">
-                <div class="season__img">
-                    <img src="../assets/img/winter_collection_bg.jpg" alt="winter">
-                </div>
-                <div class="season__text">
-                    <h3>Winter Collection</h3>
-                    <h5>Stilish and warm</h5>
-                    <a href="#" class="btn btn--sm btn--border">View More</a>
-                </div>
+                <CollectionCard
+                    :image="require('../assets/img/winter_collection_bg.jpg')"
+                    :title="'Winter Collection'"
+                    :subtitle="'Stilish and warm'"
+                    :link="'#'"
+                />
             </div>
             <div class="collection__season">
-                <div class="season__img">
-                    <img src="../assets/img/spring_collection_bg.jpg" alt="spring">
-                </div>
-                <div class="season__text">
-                    <h3>Spring Collection</h3>
-                    <h5>Bright and colorful</h5>
-                    <a href="#" class="btn btn--sm btn--border">View More</a>
-                </div>
+                <CollectionCard
+                    :image="require('../assets/img/spring_collection_bg.jpg')"
+                    :title="'Spring Collection'"
+                    :subtitle="'Bright and colorful'"
+                    :link="'#'"
+                />
             </div>
             <div class="collection__season">
-                <div class="season__img">
-                    <img src="../assets/img/autumn_collection_bg.jpg" alt="autumn">
-                </div>
-                <div class="season__text">
-                    <h3>Autumn Collection</h3>
-                    <h5>Rich and comfortable</h5>
-                    <a href="#" class="btn btn--sm btn--border">View More</a>
-                </div>
+                <CollectionCard
+                    :image="require('../assets/img/autumn_collection_bg.jpg')"
+                    :title="'Autumn Collection'"
+                    :subtitle="'Rich and comfortable'"
+                    :link="'#'"
+                />
             </div>
         </section>
         <!-- /collection -->
@@ -114,6 +108,7 @@
 <script>
 import SectionHeader from './SectionHeader.vue';
 import Carousel from './Carousel.vue';
+import CollectionCard from './CollectionCard.vue';
 import AdvCard from './AdvCard.vue';
 
 
@@ -122,6 +117,7 @@ export default {
     components: {
         SectionHeader,
         Carousel,
+        CollectionCard,
         AdvCard
     },
     props: {
@@ -257,29 +253,6 @@ export default {
 
     .collection__season {
         flex-grow: 1;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-
-        .season__text>* {
-            margin-bottom: $gutter--md;
-
-            &:last-child {
-                margin-bottom: $gutter--lg;
-            }
-        }
-    }
-
-    .season__img {
-        height: 100%;
-        width: 100%;
-        position: absolute;
-        z-index: -1;
-    }
-
-    img {
-        @include objFit--C-T;
     }
 }
 

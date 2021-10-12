@@ -37,5 +37,10 @@ export default {
     & > * {
         margin: 0 auto $gutter--md 0;
     }
+
+    p {
+        width: 60%;
+        line-height: 2rem;
+    }
 }
 </style>
