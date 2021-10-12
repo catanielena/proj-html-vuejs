@@ -64,8 +64,8 @@
                     <img src="../assets/img/spring_collection_bg.jpg" alt="spring">
                 </div>
                 <div class="season__text">
-                    <h3>Winter Collection</h3>
-                    <h5>Stilish and warm</h5>
+                    <h3>Spring Collection</h3>
+                    <h5>Bright and colorful</h5>
                     <a href="#" class="btn btn--sm btn--border">View More</a>
                 </div>
             </div>
@@ -74,22 +74,34 @@
                     <img src="../assets/img/autumn_collection_bg.jpg" alt="autumn">
                 </div>
                 <div class="season__text">
-                    <h3>Winter Collection</h3>
-                    <h5>Stilish and warm</h5>
+                    <h3>Autumn Collection</h3>
+                    <h5>Rich and comfortable</h5>
                     <a href="#" class="btn btn--sm btn--border">View More</a>
                 </div>
             </div>
         </section>
         <!-- /collection -->
+        <!-- best-seller -->
+        <section class="best-seller">
+            <div class="wrapper">
+                <SectionHeader :title="'Best Seller'" :subtitle="'Must have products from our top sellers'"/>
+                <Carousel :selection="getBestSeller()"/>
+            </div>
+        </section>
+        <!-- /best-seller -->
+
     </main>
 </template>
 
 <script>
-import SectionHeader from './SectionHeader.vue'
+import SectionHeader from './SectionHeader.vue';
+import Carousel from './Carousel.vue';
+
 export default {
     name:"Main",
     components: {
-        SectionHeader
+        SectionHeader,
+        Carousel
     },
     props: {
         products: Array,
@@ -112,7 +124,13 @@ export default {
         },
         commaList(arr) {
             return arr.join(', ')
-        }
+        },
+        getBestSeller() {
+            return this.products
+                .filter(e => e.bestSeller == true)
+                .reverse()
+        },
+
     },
     mounted() {
         this.getProd(this.categories[0].name)
@@ -243,5 +261,9 @@ export default {
     img {
         @include objFit--C-T;
     }
+}
+
+.best-seller {
+    margin: $sectionMargin;
 }
 </style>
