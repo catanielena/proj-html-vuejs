@@ -124,7 +124,7 @@
                 <transition name="fade">
                     <div class="testimonials__item" v-if="testimonialWoman">
                         <img src="../assets/img/woman_testimonial.png" alt="woman_testimonial">
-                        <p class="item__comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis alias, veniam saepe illo eveniet necessitatibus libero vel, sunt quas error hic? Autem atque, rerum ut fugit voluptate ipsa unde incidunt. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore ex eveniet ipsam voluptatem neque esse, quia harum omnis? </p>
+                        <p class="item__comment">Proin blandit metus vel magna dignissim varius. Morbi enim lorem, sollicitudin vitae ante nec, rutrum venenatis neque. In mi augue, iaculis nec dui ac, condimentum consequat velit. Ut et metus justo.</p>
                         <div class="item__author">
                             <span class="author__name">Alexandra Gonz&aacute;lez</span>, Theme Fusion
                         </div>
@@ -153,10 +153,10 @@
                             :date="`${blog[index].date}`"
                             :commentNumb="`${blog[index].comments.length}`"
                             :txt="`${blog[index].postPreview}`"
+                            :url="`${blog[index].url}`"
                         />
                     </div>
                 </div>
-
         </section>
         <!-- /blog -->
 

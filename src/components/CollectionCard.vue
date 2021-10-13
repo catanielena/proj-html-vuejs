@@ -5,7 +5,7 @@
         </div>
         <div class="collection-car__text">
             <h3>{{title}}</h3>
-            <h5>{{Subtitle}}</h5>
+            <h5>{{subtitle}}</h5>
             <a :href="link" class="btn btn--sm btn--border">View More</a>  
         </div>      
     </div>
@@ -17,7 +17,7 @@ export default {
     props: {
         image: String,
         title: String,
-        Subtitle: String,
+        subtitle: String,
         link: String
     }
 }
