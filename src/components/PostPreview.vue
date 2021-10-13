@@ -20,7 +20,7 @@ export default {
         image: String,
         title: String,
         date: String,
-        commentNumb: Number,
+        commentNumb: String,
         txt: String,
         url: String
     }

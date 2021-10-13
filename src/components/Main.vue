@@ -159,6 +159,45 @@
                 </div>
         </section>
         <!-- /blog -->
+        <!-- prod-news -->
+        <section class="prod-news">
+            <div class="wrapper">
+                <div class="prod-news__category">
+                    <h5>Featured</h5>
+                    <ul class="category__list">
+                        <li v-for="(n,index) in 3" :key="`featured--${getProdByFeatured()[index].id}`">
+                            <SmallProdCard :prod="getProdByFeatured()[index]" :rev="false"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="prod-news__category">
+                    <h5>On sale</h5>
+                    <ul class="category__list">
+                        <li v-for="(n,index) in 3" :key="`featured--${getProdBySale()[index].id}`">
+                            <SmallProdCard :prod="getProdBySale()[index]" :rev="false"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="prod-news__category">
+                    <h5>Top rated</h5>
+                    <ul class="category__list">
+                        <li v-for="(n,index) in 3" :key="`featured--${getProdByRated()[index].id}`">
+                            <SmallProdCard :prod="getProdByRated()[index]" :rev="false"/>
+                        </li>
+                    </ul>
+                </div>
+                <div class="prod-news__category">
+                    <h5>Latest Reviews</h5>
+                    <ul class="category__list">
+                        <li v-for="(n,index) in 3" :key="`featured--${getProdByReview()[index].id}`">
+                            <SmallProdCard :prod="getProdByReview()[index]" :rev="true"/>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+        <!-- /prod-news -->
 
 
     </main>
@@ -170,7 +209,7 @@ import Carousel from './Carousel.vue';
 import CollectionCard from './CollectionCard.vue';
 import AdvCard from './AdvCard.vue';
 import PostPreview from './PostPreview.vue';
-
+import SmallProdCard from './SmallProdCard.vue';
 
 export default {
     name:"Main",
@@ -179,7 +218,8 @@ export default {
         Carousel,
         CollectionCard,
         AdvCard,
-        PostPreview
+        PostPreview,
+        SmallProdCard
     },
     props: {
         products: Array,
@@ -211,13 +251,38 @@ export default {
                 .filter(e => e.bestSeller == true)
                 .reverse()
         },
+        rateAverage: function(n) {
+            let average = 0;
+            n.reviews.forEach(elm => {
+                average += elm.rate         
+            });
+            return Math.ceil(average / parseInt(n.reviews.length))
+        },
         getNewArrivals() {
             return this.products
                 .filter(e => e.newArrivals == true)
+        },
+        getProdByFeatured() {
+            return this.products.filter((e) => e.featured == true);
+        },
+        getProdBySale() {
+            return this.products.filter((e) => e.salePrice !== null);
+        },
+        getProdByRated() {
+            return this.products.filter((e) => this.rateAverage(e) == 5 && e.reviews.length > 0);
+        },
+        getProdByReview() {
+            let reviewsCol = [];
+            this.products.forEach((e) => {
+                for(let i = 0; i< e.reviews.length; i++) {
+                    reviewsCol.push({...e, reviews: [e.reviews[i]]})
+                }
+            });            
+            return reviewsCol.sort((a,b) => a.reviews[0].date - b.reviews[0].date).reverse()
         }
     },
     mounted() {
-        this.getProd(this.categories[0].name)
+        this.getProd(this.categories[0].name);
     }
 }
 </script>
@@ -301,13 +366,6 @@ export default {
             .item__list>* {
                 margin-top: $gutter;
             }
-        }
-
-        .sale-price {
-            color: $cbHavelockBlue;
-            text-decoration: line-through;
-            text-decoration-color: $cbShark;
-            margin-right: $gutter--sm;
         }
     }
 
@@ -394,4 +452,19 @@ export default {
     }
 }
 
+.prod-news {
+    padding: $sectionMargin--sm 0;
+    .wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .prod-news__category {
+        width: calc(25% - 2.5rem);
+    }
+
+    h5 {
+        margin-bottom: 2.5rem;
+    }
+}
 </style>

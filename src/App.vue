@@ -11,7 +11,6 @@ import Header from './components/Header.vue';
 import Main from './components/Main.vue';
 import Footer from './components/Footer.vue';
 
-
 export default {
   name: 'App',
   components: {
@@ -60,7 +59,8 @@ export default {
           newArrivals: true,
           id: 'black_leather_jacket',
           category: 'women',
-          tag: ['Women', 'Jackets']
+          tag: ['Women', 'Jackets'],
+          url: '#'
         },
         {
           name: 'Black Leader Jacket',
@@ -70,12 +70,12 @@ export default {
             {
               rate: 5,
               author: 'admin',
-              date: '11/10/21'
+              date: new Date('11/10/21')
             },
             {
               rate: 5,
               author: 'flower',
-              date: '08/09/21'
+              date: new Date('08/09/21')
             }
           ],
           featured: true,
@@ -83,7 +83,8 @@ export default {
           newArrivals: true,
           id: 'black_elegant_leather_jacket',
           category: 'men',
-          tag: ['Men', 'Jackets']
+          tag: ['Men', 'Jackets'],
+          url: '#'
         },
         {
           name: 'Hipster Black Top',
@@ -95,7 +96,8 @@ export default {
           newArrivals: true,
           id: 'hipster_black_top',
           category: 'women',
-          tag: ['Women', 'Top']
+          tag: ['Women', 'Top'],
+          url: '#'
         },
         {
           name: 'Blue Leather Jacket',
@@ -107,7 +109,8 @@ export default {
           newArrivals: true,
           id: 'blue_leather_jacket',
           category: 'men',
-          tag: ['Men', 'Jackets', 'Suits']
+          tag: ['Men', 'Jackets', 'Suits'],
+          url: '#'
         },
         {
           name: 'Modern Leather Boots',
@@ -119,7 +122,8 @@ export default {
           bestSeller: false,
           newArrivals: false,
           category: 'accessories',
-          tag: ['Accesories', 'Boots']
+          tag: ['Accesories', 'Boots'],
+          url: '#'
         },
         {
           name: 'Leather Gloves',
@@ -129,17 +133,17 @@ export default {
             {
               rate: 5,
               author: 'BeardMan',
-              date: '10/10/21'
+              date: new Date('10/10/21')
             },
             {
               rate: 5,
               author: 'SpaceX',
-              date: '21/09/21'
+              date: new Date('21/09/21')
             },
             {
               rate: 5,
               author: 'Donuts',
-              date: '01/10/21'
+              date: new Date('01/10/21')
             }
           ],
           featured: true,
@@ -147,7 +151,8 @@ export default {
           newArrivals: false,
           id: 'leather_gloves',
           category: 'accessories',
-          tag: ['Accesories', 'Gloves']
+          tag: ['Accesories', 'Gloves'],
+          url: '#'
         },
         {
           name: 'Spring Printed Dress',
@@ -157,7 +162,7 @@ export default {
             {
               rate: 5,
               author: 'admin',
-              date: '09/10/21'
+              date: new Date('09/10/21')
             }
           ],
           featured: false,
@@ -165,7 +170,8 @@ export default {
           newArrivals: true,
           id: 'spring_printed_dress',
           category: 'women',
-          tag: ['Women', 'Dress']
+          tag: ['Women', 'Dress'],
+          url: '#'
         },
         {
           name: 'Black Leather Suit',
@@ -177,7 +183,8 @@ export default {
           bestSeller: false,
           newArrivals: true,
           category: 'men',
-          tag: ['Men', 'Jackets']
+          tag: ['Men', 'Jackets'],
+          url: '#'
         }, 
         {
           name: 'Modern Black Leather Suit',
@@ -189,7 +196,8 @@ export default {
           newArrivals: false,
           id: 'modern_black_leather_suit',
           category: 'men',
-          tag: ['Men', 'Jackets']
+          tag: ['Men', 'Jackets'],
+          url: '#'
         },     
         {
           name: 'Blue Jacket & Strippe Tee',
@@ -201,7 +209,8 @@ export default {
           newArrivals: false,
           id: 'blue_jacket_and_white_stripe_tee',
           category: 'men',
-          tag: ['Men', 'Jackets', 'Suits']
+          tag: ['Men', 'Jackets', 'Suits'],
+          url: '#'
         },
         {
           name: 'Modern Love Tee',
@@ -213,7 +222,8 @@ export default {
           newArrivals: true,
           id: 'modern_love_tee',
           category: 'women',
-          tag: ['Women', 'Tee']
+          tag: ['Women', 'Tee'],
+          url: '#'
         }         
       ],
       products: [],

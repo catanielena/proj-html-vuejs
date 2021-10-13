@@ -67,7 +67,7 @@ body {
 }
 
 .text--sm {
-    font-size: .85rem;
+    font-size: $txt--sm;
 }
 
 p {
@@ -161,4 +161,15 @@ button.btn--filled {
   
 .fade-enter, .fade-leave-to  {
 opacity: 0;
+}
+// 
+// 
+// Sale
+// 
+// 
+.sale-price {
+    color: $cbHavelockBlue;
+    text-decoration: line-through;
+    text-decoration-color: $cbShark;
+    margin-right: $gutter--sm;
 }
