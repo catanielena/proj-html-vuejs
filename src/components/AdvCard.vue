@@ -40,7 +40,6 @@ export default {
 
     p {
         width: 60%;
-        line-height: 2rem;
     }
 }
 </style>

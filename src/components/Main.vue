@@ -108,7 +108,41 @@
                 <SectionHeader :title="'New Arrivals'" :subtitle="'Must have products from our top designers'"/>
                 <Carousel :selection="getNewArrivals()"/>       
         </section>
-        <!-- /new-arrivals -->        
+        <!-- /new-arrivals -->    
+        <!-- comments -->
+        <section class="testimonials banner">
+            <div class="wrapper">
+                <transition name="fade">
+                    <div class="testimonials__item" v-if="testimonialMan">
+                        <img src="../assets/img/man_testimonial.png" alt="man_testimonial">
+                        <p class="item__comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis alias quas nihil ratione eius. Quis alias mollitia sed, praesentium nesciunt assumenda eaque voluptas? Maiores dignissimos atque, consequuntur temporibus unde necessitatibus! Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                        <div class="item__author">
+                            <span class="author__name">Dar&iacute;o Pineda</span>, Theme Fusion
+                        </div>
+                    </div>
+                </transition>
+                <transition name="fade">
+                    <div class="testimonials__item" v-if="testimonialWoman">
+                        <img src="../assets/img/woman_testimonial.png" alt="woman_testimonial">
+                        <p class="item__comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis alias, veniam saepe illo eveniet necessitatibus libero vel, sunt quas error hic? Autem atque, rerum ut fugit voluptate ipsa unde incidunt. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore ex eveniet ipsam voluptatem neque esse, quia harum omnis? </p>
+                        <div class="item__author">
+                            <span class="author__name">Alexandra Gonz&aacute;lez</span>, Theme Fusion
+                        </div>
+                    </div>
+                </transition>
+                <div class="testimonials--btn" :enter="enter">
+                    <button type="button" class="btn" @click="testimonialMan = true, testimonialWoman = false">
+                        <i :class="testimonialMan ? 'fas fa-circle' : 'far fa-circle'"></i>
+                    </button>  
+                    <button type="button" class="btn" @click="testimonialMan = false, testimonialWoman = true">
+                        <i :class="testimonialWoman ? 'fas fa-circle' : 'far fa-circle'"></i>
+                    </button>                                      
+                </div>
+
+            </div>
+        </section>
+        <!-- /comments -->
+
     </main>
 </template>
 
@@ -133,7 +167,9 @@ export default {
     },
     data() {
         return {
-            productsFiltered: []
+            productsFiltered: [],
+            testimonialMan: true,
+            testimonialWoman: false
         }
     },
     methods: {
@@ -157,8 +193,7 @@ export default {
         getNewArrivals() {
             return this.products
                 .filter(e => e.newArrivals == true)
-        },
-
+        }
     },
     mounted() {
         this.getProd(this.categories[0].name)
@@ -285,6 +320,45 @@ export default {
         width: calc(50% - $gutter--md);
         background-color: red;
     }
-
 }
+
+.testimonials {
+    padding: $sectionMargin 0;
+    color: $cbWhite;
+    text-align: center;
+    @include bgImg--Center('../assets/img/testimonials_home_1_bg.jpg');
+
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        position: relative;
+        height: 100%;
+    }
+
+    .testimonials__item {
+        position: absolute;
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & > * {
+            margin-bottom: $gutter--md;
+        }
+        .item__comment {
+            font-style: italic;
+        }
+
+        .author__name {
+            font-weight: 700;
+        }
+
+    }
+
+    .btn {
+        color: $cbWhite;
+    }
+}
+
 </style>

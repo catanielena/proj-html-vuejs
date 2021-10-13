@@ -36,7 +36,7 @@ button,
 input {
     font-family: 'Montserrat', sans-serif;
     font-size: $txt;
-    letter-spacing: .02rem;
+    letter-spacing: .07rem;
 }
 // --titles
 h2 {
@@ -70,7 +70,9 @@ body {
     font-size: .85rem;
 }
 
-
+p {
+    line-height: 2rem;
+}
 // 
 // 
 // Reset list
@@ -148,4 +150,15 @@ button.btn--border {
 button.btn--filled {
     background-color: $grey-800;
 }
-
+// 
+// 
+// Transition
+// 
+// 
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+}
+  
+.fade-enter, .fade-leave-to  {
+opacity: 0;
+}
