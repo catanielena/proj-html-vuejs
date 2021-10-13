@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header :mainNav="mainNav"/>
-    <Main :products="products" :categories="categories"/>    
+    <Main :products="products" :categories="categories" :blog="blog"/>    
     <Footer/>
   </div>
 </template>
@@ -49,32 +49,6 @@ export default {
         }      
       ],
       tags: ['Black', 'boots', 'Brown', 'Casual', 'D&G', 'Fabric', 'flowers', 'Grey', 'hot', 'Hipster', 'lines', 'multi-purpose', 'New York', 'Outdoors', 'red', 'responsive', 'summer', 'sweater', 'Travel', 'Warm', 'White', 'winter'],
-      recentPosts: [
-        {
-          title: 'Aenean loborotis sapien enim viverra',
-          url: "#",
-        },
-        {
-          title: 'Duis ac massa semper maximus',
-          url: "#",
-        },
-        {
-          title: 'Nunc ferminint nulla eu justo sem id',
-          url: "#",
-        },
-        {
-          title: 'Aliquam posuere magna eget nibh',
-          url: "#",
-        },
-        {
-          title: 'Cras ac nulla ac consecte sutrum',
-          url: "#",
-        },
-        {
-          title: 'Fusce mattis nuns ut aliquam',
-          url: "#",
-        },
-      ],
       data: [
         {
           name: 'Black Jacket',
@@ -255,6 +229,48 @@ export default {
         {
           name: 'accessories',
           active: false
+        }
+      ],
+      blog: [
+        {
+          title: 'Aenean lobortis sapien enim viverra',
+          date: 'September 9th, 2015',
+          comments: [],
+          postPreview: 'Donec eris felix multos numerabis amicos tempora si fuerint nubila solus eris',
+          url: "#",
+          id: 12
+        },
+        {
+          title: 'Nunc ferminint nulla eu justo sem id',
+          date: 'September 9th, 2015',
+          comments: [],
+          postPreview: 'Donec eris felix multos numerabis amicos tempora si fuerint nubila solus eris',
+          url: "#",
+          id: 11
+        },
+        {
+          title: 'Aenean lobortis sapien enim viverra',
+          date: 'September 9th, 2015',
+          comments: [],
+          postPreview: 'Donec eris felix multos numerabis amicos tempora si fuerint nubila solus eris',
+          url: "#",
+          id: 10
+        },
+        {
+          title: 'Cras ac nulla ac consecte sutrum',
+          date: 'September 9th, 2015',
+          comments: [],
+          postPreview: 'Donec eris felix multos numerabis amicos tempora si fuerint nubila solus eris',
+          url: "#",
+          id: 9
+        },
+        {
+          title: 'Fusce mattis nuns ut aliquam',
+          date: 'September 9th, 2015',
+          comments: [],
+          postPreview: 'Donec eris felix multos numerabis amicos tempora si fuerint nubila solus eris',
+          url: "#",
+          id: 8
         }
       ]
     }

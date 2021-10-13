@@ -109,7 +109,7 @@
                 <Carousel :selection="getNewArrivals()"/>       
         </section>
         <!-- /new-arrivals -->    
-        <!-- comments -->
+        <!-- testimonials -->
         <section class="testimonials banner">
             <div class="wrapper">
                 <transition name="fade">
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                 </transition>
-                <div class="testimonials--btn" :enter="enter">
+                <div class="testimonials--btn">
                     <button type="button" class="btn" @click="testimonialMan = true, testimonialWoman = false">
                         <i :class="testimonialMan ? 'fas fa-circle' : 'far fa-circle'"></i>
                     </button>  
@@ -141,7 +141,25 @@
 
             </div>
         </section>
-        <!-- /comments -->
+        <!-- /testimonials -->
+        <!-- blog -->
+        <section class="blog">
+                <SectionHeader :title="'From our blog'" :subtitle="'The latest Classic Shop news'"/>
+                <div class="wrapper">
+                    <div class="blog__post" v-for="(n, index) in 3" :key="index">
+                        <PostPreview
+                            :image="require(`../assets/img/post_img_${blog[index].id}-700x441.jpg`)"
+                            :title="`${blog[index].title}`"
+                            :date="`${blog[index].date}`"
+                            :commentNumb="`${blog[index].comments.length}`"
+                            :txt="`${blog[index].postPreview}`"
+                        />
+                    </div>
+                </div>
+
+        </section>
+        <!-- /blog -->
+
 
     </main>
 </template>
@@ -151,6 +169,7 @@ import SectionHeader from './SectionHeader.vue';
 import Carousel from './Carousel.vue';
 import CollectionCard from './CollectionCard.vue';
 import AdvCard from './AdvCard.vue';
+import PostPreview from './PostPreview.vue';
 
 
 export default {
@@ -159,11 +178,13 @@ export default {
         SectionHeader,
         Carousel,
         CollectionCard,
-        AdvCard
+        AdvCard,
+        PostPreview
     },
     props: {
         products: Array,
-        categories: Array
+        categories: Array,
+        blog: Array
     },
     data() {
         return {
@@ -303,7 +324,7 @@ export default {
 }
 
 .best-seller,
-.new-arrivals {
+.new-arrivals{
     margin: $sectionMargin 0;
 }
 
@@ -358,6 +379,18 @@ export default {
 
     .btn {
         color: $cbWhite;
+    }
+}
+
+.blog {
+    padding: $sectionMargin 0;
+    border-bottom: $border2;
+    .wrapper {
+        @include flex--SB-C;
+    }
+
+    .blog__post {
+        width: calc(100% / 3 - $gutter--md);
     }
 }
 
