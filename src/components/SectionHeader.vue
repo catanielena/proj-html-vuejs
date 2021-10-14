@@ -32,7 +32,7 @@ export default {
 
         h3 {
             position: relative;
-            margin: 0 $gutter--lg;
+            margin: 0 $gutter;
         }
 
         .line {

@@ -1,5 +1,5 @@
 <template>
-    <div class="prod__card">
+    <div class="prod__card" :class="dark==true ? 'dark' : 'light'">
         <ul class="card__info">
             <li class="title" >
                 <a class="title__link" :href="prod.url">{{prod.name}}</a>
@@ -31,7 +31,8 @@ export default {
     name:"SmallProdCard",
     props: {
         prod: Object,
-        rev: Boolean
+        rev: Boolean,
+        dark: Boolean
     },
     methods: {
         rateAverage() {
@@ -53,10 +54,18 @@ export default {
 .prod__card {
     display: flex;
     padding: 1rem 0;
-    border-bottom: $border;
+
+    &.dark {
+        border-bottom: $borderDark;
+    }
+
+    &.light {
+        border-bottom: $border;
+    }
 
     .card__info {
         flex-grow: 1;
+
 
         &>* {
             display: inline-block;
@@ -66,6 +75,7 @@ export default {
 
         a, li{
             font-size: $txt--sm;
+            color: currentColor;
         }
 
         .title__link {
@@ -81,9 +91,7 @@ export default {
         }
 
         .sale-price {
-            color: $cbShark;
-            font-weight: 500;         
-
+            font-weight: 500;  
         }
 
         .price {
@@ -91,12 +99,13 @@ export default {
             
             &.underline {
                 text-decoration: underline;
+                text-decoration-color: currentColor;
             }          
         }
     }
 
     .card__img {
-        width: 4rem;
+        width: 6rem;
 
         img {
             width: 100%;

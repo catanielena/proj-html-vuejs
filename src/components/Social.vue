@@ -37,5 +37,9 @@ export default {
         color: currentColor;
     }
 
+    i {
+        font-size: $txt--md;
+    }
+
 }
 </style>

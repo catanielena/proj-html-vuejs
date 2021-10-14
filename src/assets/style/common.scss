@@ -1,6 +1,7 @@
 @import './variables';
 @import './mixin';
 @import '~@fortawesome/fontawesome-free/css/all.css';
+
 // 
 // 
 // Reset
@@ -16,7 +17,7 @@
 // 
 // 
 .wrapper {
-    max-width: 75rem;
+    width: 80%;
     margin: 0 auto
 }
 
@@ -36,25 +37,33 @@ button,
 input {
     font-family: 'Montserrat', sans-serif;
     font-size: $txt;
-    letter-spacing: .07rem;
+    letter-spacing: .03rem;
 }
 // --titles
 h2 {
-    font-size: 3.75rem;
+    font-size: 5rem;
     font-weight: 700;
 }
 
 h3 {
-    font-size: 2rem;
+    font-size: 2.7rem;
 }
 
 h4 {
-    font-size: 1rem;
+    font-size: 1.4rem;
 }
 
 h5 {
-    font-size: 1rem;
+    font-size: 1.4rem;
     font-weight: 400;
+    letter-spacing: .3rem;
+    text-transform: uppercase;
+}
+
+h6 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: .1rem;
     text-transform: uppercase;
 }
 // --txt 
@@ -63,7 +72,7 @@ body {
     color: $cbShark;
 }
 .text--xs {
-    font-size: .75rem;
+    font-size: $txt--xs;
 }
 
 .text--sm {
@@ -89,10 +98,11 @@ ul {
 a {
     display: inline-block;
     text-decoration: none;
+    cursor: pointer;
 }
 
 a.btn--sm {
-    font-size: $txt;
+    font-size: $txt--xs;
     font-weight: 600;
     letter-spacing: .05rem;
     text-transform: uppercase;
@@ -111,6 +121,8 @@ a.btn--md {
 a.btn--filled {
     background-color: $cbHavelockBlue;
     color: $cbWhite;
+    width: 12rem;
+    text-align: center;
 }
 
 a.btn--border {
@@ -156,7 +168,7 @@ button.btn--filled {
 // 
 // 
 .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
+    transition: opacity 1s;
 }
   
 .fade-enter, .fade-leave-to  {
@@ -170,6 +182,25 @@ opacity: 0;
 .sale-price {
     color: $cbHavelockBlue;
     text-decoration: line-through;
-    text-decoration-color: $cbShark;
+    text-decoration-color: currentColor;
     margin-right: $gutter--sm;
+}
+// 
+// 
+// Input
+// 
+//
+input {
+    font-size: $txt--xs;
+    padding: .8rem 1.25rem;
+    border-radius: 2rem;
+    width: 20rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+::placeholder {
+    color: $grey-300;
 }

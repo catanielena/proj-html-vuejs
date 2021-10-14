@@ -5,12 +5,12 @@
             <div class="wrapper">
                 <Social/>
                 <div class="header-top--user-bar">
-                    <button class="btn text--sm">Shopping Cart</button>
-                    <button class="btn text--sm btn--border">
+                    <button class="btn text--xs">Shopping Cart</button>
+                    <button class="btn text--xs btn--border">
                         <span>My Account</span>
                         <i class="fas fa-chevron-down text--xs"></i>
                     </button>
-                    <button class="btn text--sm btn--lg btn--filled btn-cart">
+                    <button class="btn text--xs btn--lg btn--filled btn-cart">
                         <i class="fas fa-shopping-cart"></i>
                         <span>CART</span>
                         <i class="fas fa-chevron-down"></i>
@@ -65,10 +65,10 @@ export default {
 @import '../assets/style/common';
 
 .Header {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 10;
+    // position: fixed;
+    // width: 100%;
+    // top: 0;
+    // z-index: 10;
     background-color: $cbWhite;
 
     & > * {
@@ -104,8 +104,14 @@ export default {
             align-items: center;
         }
         .list__item {
+            font-weight: 700;
+            
             .btn {
                 padding: $gutter--lg 0;
+            }
+
+            span {
+                font-size: $txt--sm;
             }
         }
 

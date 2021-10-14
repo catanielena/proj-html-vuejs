@@ -29,6 +29,9 @@ $grey: #575c61;
 $grey-300:#c1c1c1;
 $grey-500: #eaeaea;
 $grey-800: #f6f6f6;
+$dark--300: #303337;
+$dark--100: #2b2e32;
+$dark: #1d1f22;
 // 
 //
 // Gutter
@@ -44,9 +47,10 @@ $gutter--xl: 7.5rem;
 // FontSize
 // 
 //
-$txt--sm: .87rem;
-$txt: 1rem;
-$txt--md: 1.2rem;
+$txt--xs: 1rem;
+$txt--sm: 1.1rem;
+$txt: 1.2rem;
+$txt--md: 1.4rem;
 // 
 //
 // Border
@@ -54,6 +58,7 @@ $txt--md: 1.2rem;
 //
 $border: 1px solid $grey-500;
 $border2: 2px solid $grey-500;
+$borderDark: 1px solid $grey;
 // 
 //
 // Section 

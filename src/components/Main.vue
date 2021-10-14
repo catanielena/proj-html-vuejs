@@ -25,7 +25,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="featured-prod__prod">
+                <div class="featured-prod__prod">                    
                     <ul class="prod__list">
                         <li class="list__item" v-for="prod in productsFiltered" :key="prod.id">
                             <div class="item__img">
@@ -166,31 +166,31 @@
                     <h5>Featured</h5>
                     <ul class="category__list">
                         <li v-for="(n,index) in 3" :key="`featured--${getProdByFeatured()[index].id}`">
-                            <SmallProdCard :prod="getProdByFeatured()[index]" :rev="false"/>
+                            <SmallProdCard :prod="getProdByFeatured()[index]" :rev="false" :dark="false"/>
                         </li>
                     </ul>
                 </div>
                 <div class="prod-news__category">
                     <h5>On sale</h5>
                     <ul class="category__list">
-                        <li v-for="(n,index) in 3" :key="`featured--${getProdBySale()[index].id}`">
-                            <SmallProdCard :prod="getProdBySale()[index]" :rev="false"/>
+                        <li v-for="(n,index) in 3" :key="`sale--${getProdBySale()[index].id}`">
+                            <SmallProdCard :prod="getProdBySale()[index]" :rev="false" :dark="false"/>
                         </li>
                     </ul>
                 </div>
                 <div class="prod-news__category">
                     <h5>Top rated</h5>
                     <ul class="category__list">
-                        <li v-for="(n,index) in 3" :key="`featured--${getProdByRated()[index].id}`">
-                            <SmallProdCard :prod="getProdByRated()[index]" :rev="false"/>
+                        <li v-for="(n,index) in 3" :key="`top-rated--${getProdByRated()[index].id}`">
+                            <SmallProdCard :prod="getProdByRated()[index]" :rev="false" :dark="false"/>
                         </li>
                     </ul>
                 </div>
                 <div class="prod-news__category">
                     <h5>Latest Reviews</h5>
                     <ul class="category__list">
-                        <li v-for="(n,index) in 3" :key="`featured--${getProdByReview()[index].id}`">
-                            <SmallProdCard :prod="getProdByReview()[index]" :rev="true"/>
+                        <li v-for="(n,index) in 3" :key="`review--${index}`">
+                            <SmallProdCard :prod="getProdByReview()[index]" :rev="true" :dark="false"/>
                         </li>
                     </ul>
                 </div>
@@ -198,6 +198,35 @@
             </div>
         </section>
         <!-- /prod-news -->
+        <!-- logos -->
+        <section class="logos">
+            <div class="wrapper">
+                <div class="logos__img" v-for="i in 5" :key="`img_${i}`">
+                    <img :src="require(`../assets/img/b_logotype_${i}.png`)" alt="">
+                </div>
+            </div>
+        </section>
+        <!-- logos -->
+        <!-- subscribe -->
+        <section class="subscribe">
+
+            <div class="wrapper">
+                <div class="subscribe__item">
+                    <div class="circle">
+                        <i class="far fa-envelope"></i>
+                    </div>
+                    <h4>Subscribe now and get special offers</h4>
+                </div>
+                <div class="subscribe__item">
+                    <input type="email" placeholder="Insert your email...">
+                    <a class="btn btn--sm btn--filled">send</a>
+                </div>
+            </div>
+
+        </section>
+        <!-- subscribe -->
+
+
 
 
     </main>
@@ -210,7 +239,6 @@ import CollectionCard from './CollectionCard.vue';
 import AdvCard from './AdvCard.vue';
 import PostPreview from './PostPreview.vue';
 import SmallProdCard from './SmallProdCard.vue';
-
 export default {
     name:"Main",
     components: {
@@ -269,7 +297,7 @@ export default {
             return this.products.filter((e) => e.salePrice !== null);
         },
         getProdByRated() {
-            return this.products.filter((e) => this.rateAverage(e) == 5 && e.reviews.length > 0);
+            return this.products.filter((e) => this.rateAverage(e) == 5 && e.reviews.length > 0).sort((a,b) => a.reviews.length - b.reviews.length).reverse();
         },
         getProdByReview() {
             let reviewsCol = [];
@@ -290,13 +318,13 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/style/common';
 
-.Main {
-    padding-top: 11.4rem;
-}
+// .Main {
+//     padding-top: 11.4rem;
+// }
 
 .hero {
     color: $cbWhite;
-    height: 40.625rem;
+    height: 100vh;
     @include flex--x-C;
     @include bgImg--Top('../assets/img/home1_slide_three_bg_2.jpg');
 
@@ -338,6 +366,15 @@ export default {
 
         .btn.active {
             background-color: $cbWhite;
+        }
+
+        .btn:hover {
+            background-color: $cbWhite;
+        }
+
+        &:not(:last-child,:first-child) {
+            border-left: $border;
+            border-right: $border;
         }
     }
 
@@ -466,5 +503,55 @@ export default {
     h5 {
         margin-bottom: 2.5rem;
     }
+}
+
+.logos {
+    padding: $sectionMargin--sm 0;
+    background-color: $grey-800;
+
+    .wrapper {
+        @include flex--SB-C;
+    }
+
+    .logos__img {
+        width: calc(20% - $gutter--xl);
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+.subscribe {
+    padding: $sectionMargin--sm 0;
+    background-color: $dark--300;
+
+    .wrapper {
+        @include flex--SB-C;
+    }
+
+    .subscribe__item {
+        display: flex;
+        align-items: center;
+        color: $cbWhite;
+
+        &>* {
+            margin: 0 $gutter;
+        }
+    }
+
+    h4, i {
+        font-size: 2rem;
+    }
+
+    .circle {
+        @include flex--C-C;
+        width: 5rem;
+        height: 5rem;
+        border-radius: 50%;
+        background-color: $dark--100;
+        color: $grey;
+    }
+
 }
 </style>

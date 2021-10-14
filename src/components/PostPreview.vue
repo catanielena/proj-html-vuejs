@@ -33,7 +33,7 @@ export default {
 .post {
 
     .post__img {
-        height: 14.375rem;
+        height: 20rem;
         width: 100%;
         overflow: hidden;
     }

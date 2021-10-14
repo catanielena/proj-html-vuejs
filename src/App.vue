@@ -2,7 +2,7 @@
   <div id="app">
     <Header :mainNav="mainNav"/>
     <Main :products="products" :categories="categories" :blog="blog"/>    
-    <Footer/>
+    <Footer :products="products" :tags="tags" :blog="blog"/>
   </div>
 </template>
 
@@ -138,7 +138,7 @@ export default {
             {
               rate: 5,
               author: 'SpaceX',
-              date: new Date('21/09/21')
+              date: new Date('05/09/21')
             },
             {
               rate: 5,
