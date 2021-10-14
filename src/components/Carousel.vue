@@ -1,8 +1,9 @@
 <template>
     <div class="carousel">
         <div class="carousel__slider">
-            <VueSlickCarousel v-bind="settings">
+            <VueSlickCarousel v-bind="settings" class="main-carousel">
                 <div v-for="prod in selection" :key="`${prod.id}`" class="slider__img">
+                    <div>
                         <img :src="require(`../assets/img/${prod.id}-400x520.jpg`)" :alt="prod.id">
                         <div class="img__hover">
                             <ul class="hover__list">
@@ -15,6 +16,7 @@
                                 <a href="#" class="btn text--xs"><i class="fas fa-list-ul"></i> Details</a>
                             </div>
                         </div>
+                    </div>
                 </div>
             </VueSlickCarousel>
         </div>
@@ -34,8 +36,6 @@ export default {
     components: { VueSlickCarousel },
     data() {
         return {           
-            min: 0,
-            max: 5,
             settings: {
                 "arrows": true,
                 "infinite": true,
@@ -50,25 +50,6 @@ export default {
         }
     },
     methods: {
-        next() {
-            if(this.max >= this.selection.length) {
-                this.min = 0;
-                this.max = 5;
-            } else {
-                this.min++;
-                this.max++;
-            }
-            console.log(this.selection.length)
-        },
-        prev() {
-            if(this.min <= 0) {
-                this.min = this.selection.length - 5;
-                this.max = this.selection.length;
-            } else {
-                this.min--;
-                this.max--;
-            }
-        },
         commaList(arr) {
             return arr.join(', ')
         },     
@@ -77,41 +58,41 @@ export default {
 </script>
 <style lang="scss">
 @import '../assets/style/common';
-.carousel__slider {
+.main-carousel.carousel__slider {
     padding: 0;
 }
-.slick-slider.slick-initialized {
+.main-carousel.slick-slider.slick-initialized {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.slick-prev:before, .slick-next:before {
+.main-carousel .slick-prev:before, .slick-next:before {
     color: $cbWhite;
     background-color: $grey-300;
     padding: $gutter--md $gutter;
     font-family: "Font Awesome 5 Free";
     display: inline-block;
 }
-button.slick-prev, button.slick-next {
+.main-carousel button.slick-prev, button.slick-next {
     position: inherit;
     top: inherit;
     display: inline-block;
     width: inherit;
     height: inherit;
 }
-button.slick-next {
+.main-carousel button.slick-next {
     right: 0;
 }
-button.slick-prev {
+.main-carousel button.slick-prev {
     left: 0;
 }
-button.slick-prev:before {
+.main-carousel button.slick-prev:before {
     font-weight: 900;
     content: "\f053";
     font-family: "Font Awesome 5 Free";
 }
 
-button.slick-next:before {
+.main-carousel button.slick-next:before {
     font-weight: 900;
     content: "\f054";
     font-family: "Font Awesome 5 Free";

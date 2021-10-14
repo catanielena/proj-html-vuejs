@@ -110,6 +110,9 @@ export default {
                 padding: $gutter--lg 0;
             }
 
+            &:hover .btn {
+                color: $cbHavelockBlue;
+            }
             span {
                 font-size: $txt--sm;
             }
@@ -118,9 +121,6 @@ export default {
         .btn {
             position: relative;
             margin: 0 $gutter--md;
-            &:hover {
-                color: $cbHavelockBlue;
-            }
             &.active {
                 color: $cbHavelockBlue;
 

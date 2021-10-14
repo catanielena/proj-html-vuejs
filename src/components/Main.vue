@@ -364,7 +364,7 @@ export default {
 
     .filters-list {
         @include inlineList;
-        border: $border;
+        border: $border--300;
     }
 
     .filters-list__item {
@@ -374,8 +374,8 @@ export default {
         }
 
         &:not(:last-child,:first-child) {
-            border-left: $border;
-            border-right: $border;
+            border-left: $border--300;
+            border-right: $border--300;
         }
     }
 

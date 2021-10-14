@@ -146,6 +146,11 @@ footer {
                 border-bottom: $borderDark;
                 padding: $gutter--md 0 ;
                 font-size: $txt--sm;
+                cursor: pointer;
+
+                &:hover {
+                    color: $cbWhite;
+                }
             }
 
             i {
@@ -160,14 +165,21 @@ footer {
         }
 
         .tags__list {
+            cursor: pointer;
             @include inlineList;
             flex-wrap: wrap;
+            
             a {
                 color: white;
                 border: $borderDark;
                 padding: $gutter;
                 margin: 0 $gutter--sm $gutter--sm 0;
                 font-size: $txt--sm;
+                transition: $bgTransition;
+
+                &:hover {
+                    background-color: $cbHavelockBlue;
+                }
             }
         }
 
