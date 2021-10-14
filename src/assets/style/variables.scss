@@ -32,6 +32,7 @@ $grey-800: #f6f6f6;
 $dark--300: #303337;
 $dark--100: #2b2e32;
 $dark: #1d1f22;
+$hoverBlue: #4c8be0;
 // 
 //
 // Gutter
@@ -51,6 +52,7 @@ $txt--xs: 1rem;
 $txt--sm: 1.1rem;
 $txt: 1.2rem;
 $txt--md: 1.4rem;
+$txt--lg: 1.7rem;
 // 
 //
 // Border
@@ -73,3 +75,9 @@ $sectionMargin--sm: 5rem;
 // 
 //
 $bannerPadding: 5.625rem;
+// 
+//
+// Btn transition 
+// 
+//
+$bgTransition: background-color .3s;

@@ -21,7 +21,7 @@
                 <div class="featured-prod__filters">
                     <ul class="filters-list">
                         <li class="filters-list__item" v-for="(category, i) in categories" :key="category.name">
-                            <button class="btn btn--lg" :class="{active: category.active}" @click="filterFeatured(i),getProd(category.name)">{{category.name}}</button>
+                            <button class="btn btn--lg btn--filled" :class="{active: category.active}" @click="filterFeatured(i),getProd(category.name)">{{category.name}}</button>
                         </li>
                     </ul>
                 </div>
@@ -30,6 +30,9 @@
                         <li class="list__item" v-for="prod in productsFiltered" :key="prod.id">
                             <div class="item__img">
                                 <img :src="require(`../assets/img/${prod.id}-400x520.jpg`)" :alt="prod.id">
+                                <div class="img__hover">
+                                    <i class="fas fa-check circle"></i>
+                                </div>
                             </div>
                             <ul class="item__list">
                                 <li>
@@ -258,7 +261,7 @@ export default {
         return {
             productsFiltered: [],
             testimonialMan: true,
-            testimonialWoman: false
+            testimonialWoman: false,
         }
     },
     methods: {
@@ -330,19 +333,22 @@ export default {
 
     .wrapper {
         text-align: center;
+        animation: enter 13s ease-in-out;
 
-        & > * {
-            margin-bottom: $gutter--md;
+        &>* {
+            margin-top: $gutter--lg;
+
         }
     }
 
     h2 {
         text-transform: capitalize;
+        margin-bottom: $gutter--md;
     }
 
     .hero__subtitle {
         text-transform: uppercase;
-        font-size: $txt--md;
+        font-size: $txt--lg;
     }
 
     .hero__btn {
@@ -362,13 +368,8 @@ export default {
     }
 
     .filters-list__item {
-        background-color: $grey-800;
 
         .btn.active {
-            background-color: $cbWhite;
-        }
-
-        .btn:hover {
             background-color: $cbWhite;
         }
 
@@ -384,14 +385,42 @@ export default {
         }
 
         .list__item {
-            width: 25%;
+            width: calc(25% - $gutter);
+
+            &:not(:first-child) {
+                margin-left: $gutter;
+            }
+
+            .item__img {
+                position: relative;
+                overflow: hidden;
+                
+                .img__hover {
+                    @include flex--C-C;
+                    @include gradientBg;
+                    font-size: $txt--lg;
+                    position: absolute;
+                    top: 100%;
+                    width: 100%;
+                    height: 100%;
+                    opacity: 0;
+                    transition: top .5s, opacity .5s ease-in;
+                    i {
+                        color: $cbWhite;
+                    }
+                }                    
+                &:hover {
+                    .img__hover {
+                        top: 0;
+                        opacity: 1;
+                    } 
+                }
+                }
+            }
 
             img {
                 width: 100%;
-            }
-
-            &:last-child {
-                margin-right: auto;
+                display: block
             }
         }
         
@@ -399,14 +428,13 @@ export default {
             @include inlineList;
             justify-content: space-between;
             flex-wrap: wrap;
+            margin-top: $gutter--md;
 
             .item__list>* {
                 margin-top: $gutter;
             }
         }
     }
-
-}
 
 .collection {
     color: $cbWhite;
@@ -543,15 +571,5 @@ export default {
     h4, i {
         font-size: 2rem;
     }
-
-    .circle {
-        @include flex--C-C;
-        width: 5rem;
-        height: 5rem;
-        border-radius: 50%;
-        background-color: $dark--100;
-        color: $grey;
-    }
-
 }
 </style>

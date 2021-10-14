@@ -79,3 +79,7 @@
     list-style: none;
 }
 
+@mixin gradientBg {
+    background: rgb(66,126,213);
+    background: linear-gradient(180deg, rgba(66,126,213,0.9026961126247374) 10%, rgba(226,128,177,1) 79%);
+}

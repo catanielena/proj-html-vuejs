@@ -54,14 +54,14 @@ h4 {
 }
 
 h5 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 400;
     letter-spacing: .3rem;
     text-transform: uppercase;
 }
 
 h6 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: 400;
     letter-spacing: .1rem;
     text-transform: uppercase;
@@ -113,9 +113,10 @@ a.btn--sm {
 a.btn--md {
     font-weight: 700;
     text-transform: uppercase;
-    padding: 1.25rem 2.75rem;
-    border-radius: 2rem;
+    padding: 1.7rem 4rem;
+    border-radius: 2.3rem;
     margin: 0 $gutter;
+    letter-spacing: .1rem;
 }
 
 a.btn--filled {
@@ -123,12 +124,22 @@ a.btn--filled {
     color: $cbWhite;
     width: 12rem;
     text-align: center;
+    transition: $bgTransition;
+
+    &:hover {
+        background-color: $hoverBlue;
+    }
 }
 
 a.btn--border {
-    background-color: transparent;
     color: $cbWhite;
     border: 2px solid $cbWhite;
+    transition: $bgTransition;
+    background-color: rgba($color:  $cbWhite, $alpha: .15);
+    
+    &:hover {
+        background-color: transparent;
+    }
 }
 // 
 // 
@@ -161,6 +172,20 @@ button.btn--border {
 
 button.btn--filled {
     background-color: $grey-800;
+    transition: $bgTransition;
+
+    &:hover {
+        background-color: $cbWhite;
+    }
+}
+
+.circle {
+    @include flex--C-C;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    background-color: $dark--100;
+    color: $grey;
 }
 // 
 // 
@@ -203,4 +228,51 @@ input {
 
 ::placeholder {
     color: $grey-300;
+}
+// 
+// 
+// Animation
+// 
+//
+@keyframes enter {
+    0% {
+        opacity: 0;
+        transform: translateY(10%);
+    }
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeBottom {
+
+    0% {
+        top: 100%;
+        opacity: 0;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 0;
+    }   
+}
+
+@keyframes fadeOut {
+
+    0% {
+        top: 0;
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 0;
+    }
+
+    100% {
+        top: 100%;
+    }   
 }
