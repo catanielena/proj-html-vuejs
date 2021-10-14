@@ -3,18 +3,16 @@
         <div class="carousel__slider">
             <VueSlickCarousel v-bind="settings" class="main-carousel">
                 <div v-for="prod in selection" :key="`${prod.id}`" class="slider__img">
-                    <div>
-                        <img :src="require(`../assets/img/${prod.id}-400x520.jpg`)" :alt="prod.id">
-                        <div class="img__hover">
-                            <ul class="hover__list">
-                                <li><h4>{{prod.name}}</h4></li>
-                                <li class="text--sm">{{commaList(prod.tag)}}</li>
-                                <li class="price">${{prod.price}}</li>
-                            </ul>
-                            <div class="hover__btn">
-                                <a href="#" class="btn text--xs"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                                <a href="#" class="btn text--xs"><i class="fas fa-list-ul"></i> Details</a>
-                            </div>
+                    <img :src="require(`../assets/img/${prod.id}-400x520.jpg`)" :alt="prod.id">
+                    <div class="img__hover">
+                        <ul class="hover__list">
+                            <li><h4>{{prod.name}}</h4></li>
+                            <li class="text--sm">{{commaList(prod.tag)}}</li>
+                            <li class="price">${{prod.price}}</li>
+                        </ul>
+                        <div class="hover__btn">
+                            <a href="#" class="btn text--xs"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                            <a href="#" class="btn text--xs"><i class="fas fa-list-ul"></i> Details</a>
                         </div>
                     </div>
                 </div>
