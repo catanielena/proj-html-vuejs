@@ -18,12 +18,7 @@
                 </div>
                 <div class="footer-top__last-info">
                     <div class="last-info__rated">
-                        <h6>Top rated</h6>
-                        <ul class="rated__list">
-                            <li v-for="(n,index) in 3" :key="`featured--${getProdByRated()[index].id}`">
-                                <SmallProdCard :prod="getProdByRated()[index]" :rev="false" :dark="true"/>
-                            </li>
-                        </ul>
+                        <TopRated :selection="products" :dark="true"/>
                     </div> 
                     <div class="last-info__posts">
                         <h6>Recent posts</h6>
@@ -59,30 +54,20 @@
 
 <script>
 import Social from './Social.vue';
-import SmallProdCard from './SmallProdCard.vue';
+import TopRated from './TopRated.vue';
+
 
 export default {
     name:"Footer",
     components: {
         Social,
-        SmallProdCard
+        TopRated
+        
     },
     props: {
         products: Array,
         tags: Array,
         blog: Array
-    },
-    methods: {
-        rateAverage: function(n) {
-            let average = 0;
-            n.reviews.forEach(elm => {
-                average += elm.rate         
-            });
-            return Math.ceil(average / parseInt(n.reviews.length))
-        },
-        getProdByRated() {
-            return this.products.filter((e) => this.rateAverage(e) == 5 && e.reviews.length > 0);
-        }
     }
 }
 </script>

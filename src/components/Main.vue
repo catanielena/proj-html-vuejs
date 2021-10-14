@@ -166,36 +166,16 @@
         <section class="prod-news">
             <div class="wrapper">
                 <div class="prod-news__category">
-                    <h5>Featured</h5>
-                    <ul class="category__list">
-                        <li v-for="(n,index) in 3" :key="`featured--${getProdByFeatured()[index].id}`">
-                            <SmallProdCard :prod="getProdByFeatured()[index]" :rev="false" :dark="false"/>
-                        </li>
-                    </ul>
+                    <Featured :selection="products" :dark="false"/>
                 </div>
                 <div class="prod-news__category">
-                    <h5>On sale</h5>
-                    <ul class="category__list">
-                        <li v-for="(n,index) in 3" :key="`sale--${getProdBySale()[index].id}`">
-                            <SmallProdCard :prod="getProdBySale()[index]" :rev="false" :dark="false"/>
-                        </li>
-                    </ul>
+                    <OnSale :selection="products" :dark="false"/>
                 </div>
                 <div class="prod-news__category">
-                    <h5>Top rated</h5>
-                    <ul class="category__list">
-                        <li v-for="(n,index) in 3" :key="`top-rated--${getProdByRated()[index].id}`">
-                            <SmallProdCard :prod="getProdByRated()[index]" :rev="false" :dark="false"/>
-                        </li>
-                    </ul>
+                    <TopRated :selection="products" :dark="false"/>
                 </div>
                 <div class="prod-news__category">
-                    <h5>Latest Reviews</h5>
-                    <ul class="category__list">
-                        <li v-for="(n,index) in 3" :key="`review--${index}`">
-                            <SmallProdCard :prod="getProdByReview()[index]" :rev="true" :dark="false"/>
-                        </li>
-                    </ul>
+                    <LatestReviews :selection="products" :dark="false"/>
                 </div>
 
             </div>
@@ -241,7 +221,12 @@ import Carousel from './Carousel.vue';
 import CollectionCard from './CollectionCard.vue';
 import AdvCard from './AdvCard.vue';
 import PostPreview from './PostPreview.vue';
-import SmallProdCard from './SmallProdCard.vue';
+
+import TopRated from './TopRated.vue';
+import Featured from './Featured.vue';
+import LatestReviews from './LatestReviews.vue';
+import OnSale from './OnSale.vue';
+
 export default {
     name:"Main",
     components: {
@@ -250,7 +235,10 @@ export default {
         CollectionCard,
         AdvCard,
         PostPreview,
-        SmallProdCard
+        TopRated,
+        Featured,
+        LatestReviews,
+        OnSale
     },
     props: {
         products: Array,
@@ -282,35 +270,13 @@ export default {
                 .filter(e => e.bestSeller == true)
                 .reverse()
         },
-        rateAverage: function(n) {
-            let average = 0;
-            n.reviews.forEach(elm => {
-                average += elm.rate         
-            });
-            return Math.ceil(average / parseInt(n.reviews.length))
-        },
         getNewArrivals() {
             return this.products
                 .filter(e => e.newArrivals == true)
         },
-        getProdByFeatured() {
-            return this.products.filter((e) => e.featured == true);
-        },
         getProdBySale() {
             return this.products.filter((e) => e.salePrice !== null);
         },
-        getProdByRated() {
-            return this.products.filter((e) => this.rateAverage(e) == 5 && e.reviews.length > 0).sort((a,b) => a.reviews.length - b.reviews.length).reverse();
-        },
-        getProdByReview() {
-            let reviewsCol = [];
-            this.products.forEach((e) => {
-                for(let i = 0; i< e.reviews.length; i++) {
-                    reviewsCol.push({...e, reviews: [e.reviews[i]]})
-                }
-            });            
-            return reviewsCol.sort((a,b) => a.reviews[0].date - b.reviews[0].date).reverse()
-        }
     },
     mounted() {
         this.getProd(this.categories[0].name);
