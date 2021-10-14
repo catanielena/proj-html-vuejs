@@ -118,7 +118,9 @@ export default {
         .btn {
             position: relative;
             margin: 0 $gutter--md;
-
+            &:hover {
+                color: $cbHavelockBlue;
+            }
             &.active {
                 color: $cbHavelockBlue;
 
