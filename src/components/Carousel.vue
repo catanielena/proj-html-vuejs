@@ -1,44 +1,52 @@
 <template>
     <div class="carousel">
-        <div class="carousel__prev">
-            <button class="btn arrow" @click="prev()" >
-                <i class="fas fa-chevron-left"></i>
-            </button>
-        </div>
-        <carousel class="carousel__slider" v-bind:autoplay="true" v-bind:loop="true">
-            <slide class="slider__img" v-for="prod in selection.slice(min, max)" :key="`${prod.id}`">
-                <img :src="require(`../assets/img/${prod.id}-400x520.jpg`)" :alt="prod.id">
-                <div class="img__hover">
-                    <ul class="hover__list">
-                        <li><h4>{{prod.name}}</h4></li>
-                        <li class="text--sm">{{commaList(prod.tag)}}</li>
-                        <li class="price">${{prod.price}}</li>
-                    </ul>
-                    <div class="hover__btn">
-                        <a href="#" class="btn text--xs"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
-                        <a href="#" class="btn text--xs"><i class="fas fa-list-ul"></i> Details</a>
-                    </div>
+        <div class="carousel__slider">
+            <VueSlickCarousel v-bind="settings">
+                <div v-for="prod in selection" :key="`${prod.id}`" class="slider__img">
+                        <img :src="require(`../assets/img/${prod.id}-400x520.jpg`)" :alt="prod.id">
+                        <div class="img__hover">
+                            <ul class="hover__list">
+                                <li><h4>{{prod.name}}</h4></li>
+                                <li class="text--sm">{{commaList(prod.tag)}}</li>
+                                <li class="price">${{prod.price}}</li>
+                            </ul>
+                            <div class="hover__btn">
+                                <a href="#" class="btn text--xs"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                                <a href="#" class="btn text--xs"><i class="fas fa-list-ul"></i> Details</a>
+                            </div>
+                        </div>
                 </div>
-            </slide>
-        </carousel>
-        <div class="carousel__next"> 
-            <button class="btn arrow" @click="next()">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+            </VueSlickCarousel>
         </div>
     </div>
 </template>
 
 <script>
+  import VueSlickCarousel from 'vue-slick-carousel'
+  import 'vue-slick-carousel/dist/vue-slick-carousel.css'
+  import 'vue-slick-carousel/dist/vue-slick-carousel-theme.css'
+
 export default {
     name:"Carousel",
     props: {
         selection: Array
     },
+    components: { VueSlickCarousel },
     data() {
         return {           
             min: 0,
-            max: 5
+            max: 5,
+            settings: {
+                "arrows": true,
+                "infinite": true,
+                "slidesToShow": 5,
+                "slidesToScroll": 1,
+                "autoplay": true,
+                "speed": 1400,
+                "autoplaySpeed": 1400,
+                "cssEase": "ease-in-out", 
+                "pauseOnHover": true     
+            }
         }
     },
     methods: {
@@ -67,7 +75,48 @@ export default {
     }
 }
 </script>
+<style lang="scss">
+@import '../assets/style/common';
+.carousel__slider {
+    padding: 0;
+}
+.slick-slider.slick-initialized {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.slick-prev:before, .slick-next:before {
+    color: $cbWhite;
+    background-color: $grey-300;
+    padding: $gutter--md $gutter;
+    font-family: "Font Awesome 5 Free";
+    display: inline-block;
+}
+button.slick-prev, button.slick-next {
+    position: inherit;
+    top: inherit;
+    display: inline-block;
+    width: inherit;
+    height: inherit;
+}
+button.slick-next {
+    right: 0;
+}
+button.slick-prev {
+    left: 0;
+}
+button.slick-prev:before {
+    font-weight: 900;
+    content: "\f053";
+    font-family: "Font Awesome 5 Free";
+}
 
+button.slick-next:before {
+    font-weight: 900;
+    content: "\f054";
+    font-family: "Font Awesome 5 Free";
+}
+</style>
 <style lang="scss" scoped>
 @import '../assets/style/common';
 
@@ -76,9 +125,12 @@ export default {
     align-items: center;
 
     .carousel__slider {
-        display: flex;
-        flex-grow: 1;
-        overflow: hidden;
+        // display: flex;
+        // flex-grow: 1;
+        // overflow: hidden;
+        margin: auto;
+        padding: 20px;
+        width: 100%;
     }
 
     .slider__img {
@@ -115,6 +167,7 @@ export default {
                 li {
                     text-align: center;
                     width: 100%;
+                    margin-bottom: $gutter;
                 }
 
                 .price {
@@ -142,12 +195,6 @@ export default {
                 opacity: 1;
             } 
         }
-    }
-
-    .arrow {
-        color: $cbWhite;
-        background-color: $grey-300;
-        padding: $gutter--md $gutter;
     }
 }
 

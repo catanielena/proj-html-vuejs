@@ -386,9 +386,13 @@ export default {
 
         .list__item {
             width: calc(25% - $gutter);
+            animation: linearOpacity 15s;
 
             &:not(:first-child) {
                 margin-left: $gutter;
+            }
+            &:last-child {
+                margin-right: auto;
             }
 
             .item__img {
