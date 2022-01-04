@@ -12,3 +12,5 @@ git add -A
 git commit -m 'deploy'
 git push -f git@github.com:catanielena/proj-html-vuejs.git master:gh-pages
 cd -
+
+chmod +x deploy.sh
