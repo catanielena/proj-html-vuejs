@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "sh deploy.sh"
+    "deploy": "sh deploy.sh",
+    "preinstall": "npx npm-force-resolutions"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.4",
@@ -28,5 +29,8 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
+  },
+  "resolutions": {
+    "node-sass": "https://registry.npmjs.org/node-sass/-/node-sass-7.0.0.tgz"
   }
 }
